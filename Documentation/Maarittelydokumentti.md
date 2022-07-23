@@ -12,9 +12,12 @@ Kuulun opinto-ohjelmaan tietojenkäsittelyn kandidaatti (TKT) ja dokumentaatioss
 
 ## Lähteitä
 
-
 https://www.princeton.edu/~cuff/ele201/kulkarni_text/frequency.pdf
-https://en.wikipedia.org/wiki/Fast_Fourier_transform
-https://en.wikipedia.org/wiki/Cooley%E2%80%93Tukey_FFT_algorithm
-https://towardsdatascience.com/fast-fourier-transform-937926e591cb
+
+https://en.wikipedia.org/wiki/Fast_Fourier_transform 
+
+https://en.wikipedia.org/wiki/Cooley%E2%80%93Tukey_FFT_algorithm 
+
+https://towardsdatascience.com/fast-fourier-transform-937926e591cb 
+
 http://qucs.sourceforge.net/tech/node101.html
