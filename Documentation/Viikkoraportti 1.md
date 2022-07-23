@@ -16,9 +16,7 @@ Insinööreille suunnatun Fourier kurssin olen käynyt joskus 15 vuotta sitten.
 Seuraavaksi pitäisi aloittaa itse koodaus ja esim. tarkistaa miten saan suuret määrät dataa luettua ja millaisessa muodossa se on käytännöllisin tehdä.
 Sitten olisi itse pihvi että ymmärränkö täysin FFT algoritmin toiminnan ja saanko sen koodattua.
 
-## Kysymyksiä
+## Kysymyksiä / ongelmia
 
 Onko arvausta että saanko tämän "noviisina" tehtyä Javalla kohtuullisessa ajassa vai pitäisikö yrittää jotain muuta? Pythonin kirjastoilla lie onnistuisi, mutta jotain pitäisi tietysti itsekin sitten rakentaa.
-
-
- 
+En saa ainakaan juuri nyt ladattua Gradle supporttia tai päivitettyä mitään Netbeansissa: "Unable to connect to the NetBeans Plugin Portal because of Connection reset". 
