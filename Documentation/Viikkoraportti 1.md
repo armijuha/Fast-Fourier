@@ -18,5 +18,6 @@ Sitten olisi itse pihvi että ymmärränkö täysin FFT algoritmin toiminnan ja 
 
 ## Kysymyksiä / ongelmia
 
-Onko arvausta että saanko tämän "noviisina" tehtyä Javalla kohtuullisessa ajassa vai pitäisikö yrittää jotain muuta? Pythonin kirjastoilla lie onnistuisi, mutta jotain pitäisi tietysti itsekin sitten rakentaa.
+Onko arvausta että saanko FFT algoritmin "noviisina" tehtyä Javalla kohtuullisessa ajassa vai pitäisikö yrittää jotain muuta? Pythonin kirjastoilla lie onnistuisi, mutta jotain pitäisi tietysti itsekin sitten rakentaa.
+
 En saa ainakaan juuri nyt ladattua Gradle supporttia tai päivitettyä mitään Netbeansissa: "Unable to connect to the NetBeans Plugin Portal because of Connection reset". 
