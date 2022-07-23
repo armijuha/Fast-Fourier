@@ -1,2 +1,2 @@
 # Fast-Fourier
-Fast Fourier transform quickly converts waveform data in the time domain into the frequency domain
+Fast Fourier muuttaa nopeasti ja helposti suuren määrän aikataosn testinäytteitä taajuustaon esitykseksi
