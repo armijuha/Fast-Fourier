@@ -2,3 +2,4 @@
 Fast Fourier muuttaa nopeasti ja helposti suuren määrän aikatason testinäytteitä taajuustason esitykseksi.
 
 [Viikkoraportti 1](https://github.com/armijuha/Fast-Fourier/blob/main/Documentation/Viikkoraportti%201.md)
+[Viikkoraportti 2](https://github.com/armijuha/Fast-Fourier/blob/main/Documentation/Viikkoraportti%202.md)
