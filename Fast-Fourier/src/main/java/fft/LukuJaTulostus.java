@@ -12,13 +12,13 @@ import java.util.ArrayList;
  * 
  * @author armijuha
  */
-public class io {
+public class LukuJaTulostus {
     private String tiedostopolku;
     private int luettavatRivit;
-    private ArrayList <String> ajat;
-    private ArrayList <String> naytteet;
+    private ArrayList<String> ajat;
+    private ArrayList<String> naytteet;
     
-    public io (String tiedostopolku, int luettavatRivit){
+    public LukuJaTulostus(String tiedostopolku, int luettavatRivit) {
         this.tiedostopolku = tiedostopolku;
         this.luettavatRivit = luettavatRivit;
         this.ajat = new ArrayList();
@@ -35,28 +35,24 @@ public class io {
             File f = new File(tiedostopolku);
             FileReader fr = new FileReader(f);
             BufferedReader br = new BufferedReader(fr);
-            String rivi = br.readLine(); //lukee dataa edeltävän otsikkorivin pois
-            int luetutRivit = 0;
+            String rivi = br.readLine(); //lukee datarivejä edeltävän otsikkorivin pois
+            int luetutRivit = 0; 
             
-            while((luetutRivit < luettavatRivit)) {
-            rivi = br.readLine();
-            luetutRivit++;
-          
-            
-            String palat[] = rivi.split("       ");
-            String aika = palat[1].trim(); 
-            ajat.add(aika);
-            String nayte = palat[2].trim();
-            naytteet.add(nayte);
+            while ((luetutRivit < luettavatRivit)) {
+                rivi = br.readLine();
+                luetutRivit++;
+                String palat[] = rivi.split("       ");
+                String aika = palat[1].trim(); 
+                ajat.add(aika);
+                String nayte = palat[2].trim();
+                naytteet.add(nayte);
           
             }
-            System.out.println("Valmis");
-            
-            
+            System.out.println("Tiedoston lukeminen valmis, " + luetutRivit + " riviä luettu.");
             
         } catch (Exception e) {
-        System.out.println("Jokin tiedoston lukemisessa meni pieleen.");
-    }
+            System.out.println("Jokin tiedoston lukemisessa meni pieleen.");
+        }
     }
     
     

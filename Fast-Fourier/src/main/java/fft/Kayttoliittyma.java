@@ -8,12 +8,12 @@ import java.util.Scanner;
  * 
  * @author armijuha
  */
-public class ui {
+public class Kayttoliittyma {
     
     private Scanner scanner;
     private int lukumaara;
     
-    public ui () {
+    public Kayttoliittyma() {
         this.scanner = new Scanner(System.in);
         this.lukumaara = 0;   
     }
@@ -32,28 +32,28 @@ public class ui {
         String tiedostopolku = scanner.nextLine();
         
         while (lukumaara <= 1) {
-        System.out.println("Kuinka monta näytettä luetaan? Määrän tulee olle kakkosen potenssi kuten esim. 32, 1024 tai 1048576: ");
+            System.out.println("Kuinka monta näytettä luetaan? Määrän tulee olle kakkosen potenssi kuten esim. 32, 1024 tai 1048576: ");
         
             if (tarkistaSyote()) {
                 lukumaara = Integer.parseInt(scanner.nextLine());
-                if ((lukumaara & (lukumaara-1)) != 0) {
+                if ((lukumaara & (lukumaara - 1)) != 0) {
                     lukumaara = 0;
                     System.out.println("Virheellinen syöte, luku ei ole kakkosen potenssi");
                 }
             }
         }
         
-        io io = new io (tiedostopolku, lukumaara);
-        io.lueTiedosto();
+        LukuJaTulostus ljt = new LukuJaTulostus(tiedostopolku, lukumaara);
+        ljt.lueTiedosto();
     }
     /**
      * Tarkistaa että syöte on kokonaisluku.
      * 
      * @return totuusarvo tarkistetun syötteen oikeellisuudelle
      */
-    public boolean tarkistaSyote () {
+    public boolean tarkistaSyote() {
         if (scanner.hasNextInt()) {
-        return true;
+            return true;
         } else {
             System.out.println("Virheellinen syote, ei ole kokonaisluku");
         }
