@@ -45,6 +45,10 @@ public class Kayttoliittyma {
         
         LukuJaTulostus ljt = new LukuJaTulostus(tiedostopolku, lukumaara);
         ljt.lueTiedosto();
+        String vastaus = ljt.toString();
+        System.out.println(vastaus);
+        
+        
     }
     /**
      * Tarkistaa että syöte on kokonaisluku.
