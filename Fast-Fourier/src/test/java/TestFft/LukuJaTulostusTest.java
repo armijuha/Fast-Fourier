@@ -54,7 +54,7 @@ public class LukuJaTulostusTest {
     public void lukutesti() throws IOException {
         ljt.lueTiedosto();
         String vastaus = ljt.toString();
-        assertEquals("4 riviä luettu, 1. aika: 0,0 ja 1. näyte: -4009,75", vastaus);
+        assertEquals("4 riviä luettu, 1. aika: 0,0 ja 1. näyte: -4009.75", vastaus);
     }
 
 }

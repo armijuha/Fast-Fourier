@@ -5,7 +5,7 @@
  */
 package fft;
 
-import org.apache.commons.math3.transform.FastFourierTransformer;
+//import org.apache.commons.math3.transform.FastFourierTransformer;
 
 /**
  *
@@ -13,8 +13,8 @@ import org.apache.commons.math3.transform.FastFourierTransformer;
  */
 public class ValmisFFT {
     
-    FastFourierTransformer transformer = new FastFourierTransformer(DftNormalization.STANDARD);
-    this.data = transformer.transform(reshaped, TransformType.FORWARD);
+  //  FastFourierTransformer transformer = new FastFourierTransformer(DftNormalization.STANDARD);
+    //this.data = transformer.transform(reshaped, TransformType.FORWARD);
 
     
 }
