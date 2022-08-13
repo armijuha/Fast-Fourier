@@ -14,6 +14,6 @@ package fft;
 public class Main {
     public static void main(String[] args) {
         Kayttoliittyma kl = new Kayttoliittyma();
-        kl.start();
+        kl.aloita();
     }
 }

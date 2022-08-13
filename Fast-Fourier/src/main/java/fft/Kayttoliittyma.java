@@ -23,7 +23,7 @@ public class Kayttoliittyma {
      * että lukumäärä on luvun 2 potenssi.
      * 
      */
-    public void start() {
+    public void aloita() {
         System.out.println("*************************************************************************");
         System.out.println("Fast-Fourier muuttaa aikatason näytteet nopeasti taajuustasoon");
         System.out.println("*************************************************************************");
@@ -44,10 +44,12 @@ public class Kayttoliittyma {
         }
         
         LukuJaTulostus ljt = new LukuJaTulostus(tiedostopolku, lukumaara);
-        ljt.lueTiedosto();
-        String vastaus = ljt.toString();
-        System.out.println(vastaus);
+        double naytteet[] = ljt.lueTiedosto();
+        OmaFFT vfft = new OmaFFT(naytteet, lukumaara);
+        vfft.muunna();
         
+        String vastaus = ljt.toString();
+        System.out.println(vastaus);  
         
     }
     /**

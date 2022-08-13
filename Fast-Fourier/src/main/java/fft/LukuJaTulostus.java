@@ -17,21 +17,22 @@ public class LukuJaTulostus {
     private int luettavatRivit;
     private int luetutRivit;
     private ArrayList<String> ajat;
-    private ArrayList<Double> naytteet;
+    private double[] naytteet;
 
     public LukuJaTulostus(String tiedostopolku, int luettavatRivit) {
         this.tiedostopolku = tiedostopolku;
         this.luettavatRivit = luettavatRivit;
         this.luetutRivit = 0;
         this.ajat = new ArrayList();
-        this.naytteet = new ArrayList();
+        this.naytteet = new double[luettavatRivit];
     }
 
     /**
-     * Metodi lukee tiedoston nopeasti rivi riviltä. Aika ja testinäytteet
+     * Metodi lukee tiedoston nopeasti rivi riviltä.Aika ja testinäytteet
      * erotellaan omiin listoihinsa ja ylimääräiset välilyönnit poistetaan.
+     * @return testidatan näytteet double-taulukossa
      */
-    public void lueTiedosto() {
+    public double[] lueTiedosto() {
         try {
             File f = new File(tiedostopolku);
             FileReader fr = new FileReader(f);
@@ -46,21 +47,25 @@ public class LukuJaTulostus {
                 this.ajat.add(aika);
                 String tekstinayte = palat[2].trim(); //tyhjät pois
                 tekstinayte = tekstinayte.replace(",", "."); //pilkun vaihto pisteeseen
-                this.naytteet.add(Double.parseDouble(tekstinayte));
+                double nayte = (Double.parseDouble(tekstinayte));
+                naytteet[luetutRivit-1] = nayte;
+                System.out.println("luetut rivit: " + luetutRivit);
+                System.out.println("luettu nayte: " + nayte);
 
             }
             System.out.println("Tiedoston lukeminen valmis, " + luetutRivit + " riviä luettu.");
+            return naytteet;
 
         } catch (Exception e) {
             System.out.println("Jokin tiedoston lukemisessa meni pieleen.");
         }
-
+        return null;
     }
 
     @Override
     public String toString() {
         return "" + this.luetutRivit + " riviä luettu, 1. aika: " + ajat.get(0) +
-                " ja 1. näyte: " + naytteet.get(0);
+                " ja 1. näyte: " + naytteet[0];
     }
 
 }
