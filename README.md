@@ -7,7 +7,7 @@ Fast Fourier muuttaa nopeasti ja helposti suuren määrän aikatason testinäytt
 
 [Viikkoraportti 3](https://github.com/armijuha/Fast-Fourier/blob/main/Documentation/Viikkoraportti3.md)
 
-[Viikkoraportti 3](https://github.com/armijuha/Fast-Fourier/blob/main/Documentation/Viikkoraportti4.md)
+[Viikkoraportti 4](https://github.com/armijuha/Fast-Fourier/blob/main/Documentation/Viikkoraportti4.md)
 
 [Testausdokumentti](https://github.com/armijuha/Fast-Fourier/blob/main/Documentation/Testausdokumentti.md)
 
