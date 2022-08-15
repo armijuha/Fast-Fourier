@@ -28,7 +28,7 @@ public class ValmisFFT {
 
     }
 
-    public void Muunna() {
+    public void muunna() {
         FastFourierTransformer transformer = new FastFourierTransformer(DftNormalization.STANDARD);
         Complex[] complex = transformer.transform(data, TransformType.FORWARD);
 
