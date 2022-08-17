@@ -13,3 +13,5 @@ Fast Fourier muuttaa nopeasti ja helposti suuren määrän aikatason testinäytt
 
 [Toteutusdokumentti](https://github.com/armijuha/Fast-Fourier/blob/main/Documentation/Toteutusdokumentti.md)
 
+[Käyttöohje](https://github.com/armijuha/Fast-Fourier/blob/main/Documentation/Kayttoohje.md)
+
