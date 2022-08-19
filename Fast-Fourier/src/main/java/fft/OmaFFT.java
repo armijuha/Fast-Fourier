@@ -14,12 +14,14 @@ public class OmaFFT {
 
     private final double[] data;
     private double[] reaali;
-    private double[] imaginaari;
+    private double kokonaissaro;
+    //private double[] imaginaari;
 
     public OmaFFT(double[] data, int N) {
         this.data = data;
         this.reaali = new double[N];
-        this.imaginaari = new double[N];
+        this.kokonaissaro = 0;
+        //this.imaginaari = new double[N];
 
     }
 
@@ -54,12 +56,22 @@ public class OmaFFT {
     /**
      * Metodi laskee kokonaissärön (Total Harmonic Distorsion) Fourier
      * käännöksen perusteella
+     * @param muunnos
+     * @param taajuusmaara
+     * @return taajuuskomponenteista laskettu kokonaissärö
      */
-    public double THD(double muunnos[], int taajuusmaara) {
+    public double laskeSaro(double muunnos[], int taajuusmaara) {
         double neliosumma = 0;
         for (int i = 2; i < taajuusmaara; i++) {
             neliosumma += muunnos[i] * muunnos[i];
         }
-        return Math.sqrt(neliosumma) / Math.abs(muunnos[1]); //laskee ja palauttaa kokonaissäron
+        this.kokonaissaro = Math.sqrt(neliosumma) / Math.abs(muunnos[1]); //laskee kokonaissäron
+        kokonaissaro = Math.round(kokonaissaro * 10000d) / 10000d;
+        return kokonaissaro;
+    }
+    
+    @Override
+    public String toString() {
+        return "" + this.data.length + " näytettä käännetty, kokonaissärö: " + this.kokonaissaro;
     }
 }

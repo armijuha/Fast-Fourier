@@ -18,6 +18,7 @@ public class LukuJaTulostus {
     private int luetutRivit;
     private ArrayList<String> ajat;
     private double[] naytteet;
+    private String testirivi;
 
     public LukuJaTulostus(String tiedostopolku, int luettavatRivit) {
         this.tiedostopolku = tiedostopolku;
@@ -70,8 +71,9 @@ public class LukuJaTulostus {
         if (skaalaus) {
         skaalauskerroin = muunnos[1];
         }
+        this.testirivi = "0 : " + Math.round(Math.abs(muunnos[0]/skaalauskerroin) * 10000d) / 10000d; //tulosteen testausta varten
         for (int i = 0; i <= taajuusmaara; i++) {
-            System.out.println(" " + i + " : " + Math.abs(muunnos[i]/skaalauskerroin) );
+            System.out.println(" " + i + " : " + Math.round(Math.abs(muunnos[i]/skaalauskerroin) * 10000d) / 10000d);
             
         }
         System.out.println("");
@@ -86,6 +88,10 @@ public class LukuJaTulostus {
     public String toString() {
         return "" + this.luetutRivit + " riviä luettu, 1. aika: " + ajat.get(0) +
                 " ja 1. näyte: " + naytteet[0];
+    }
+    
+    public String otaTestirivi() {
+        return this.testirivi;
     }
 
 }

@@ -74,9 +74,9 @@ public class Kayttoliittyma {
         }
 
         ljt.tulosta(muunnos, taajuusmaara, skaalaus);
-        double saro = offt.THD(muunnos, taajuusmaara);
+        double saro = offt.laskeSaro(muunnos, taajuusmaara);
         ljt.tulostaSaro(saro);
-        
+       
         System.out.println("Kiitos käännöksestä, tervetuloa uudelleen!");
     }
 

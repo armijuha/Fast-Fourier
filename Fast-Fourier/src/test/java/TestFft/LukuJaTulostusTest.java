@@ -1,6 +1,7 @@
 package TestFft;
 
 import fft.LukuJaTulostus;
+import fft.OmaFFT;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.IOException;
@@ -22,6 +23,7 @@ public class LukuJaTulostusTest {
 
     private LukuJaTulostus ljt;
     private int luettavatRivit;
+    private OmaFFT offt;
     //private BufferedReader sisaan = null;
 
     public LukuJaTulostusTest() {
@@ -38,8 +40,10 @@ public class LukuJaTulostusTest {
     @Before
     public void setUp() throws IOException {
         //sisaan = new BufferedReader(new InputStreamReader(getClass().getResourceAsStream("/testidata")));
-        luettavatRivit = 4;
+        luettavatRivit = 1024;
         ljt = new LukuJaTulostus("/home/armijuha/Tiralabra/testi1024", luettavatRivit);
+        double naytteet[] = ljt.lueTiedosto();
+        offt = new OmaFFT(naytteet, luettavatRivit);
         //URL url = this.getClass().getResource("/testidata");
         //File testidata = new File(url.getFile());
         //ljt = new LukuJaTulostus(testidata, luettavatRivit);
@@ -52,9 +56,16 @@ public class LukuJaTulostusTest {
 
     @Test
     public void lukutesti() throws IOException {
-        ljt.lueTiedosto();
         String vastaus = ljt.toString();
-        assertEquals("4 riviä luettu, 1. aika: 0,0 ja 1. näyte: -4009.75", vastaus);
+        assertEquals("1024 riviä luettu, 1. aika: 0,0 ja 1. näyte: -4009.75", vastaus);
+    }
+    
+    @Test
+    public void tulostustesti(){
+        double muunnos[] = offt.muunnaDDF();
+        ljt.tulosta(muunnos, 200, true);
+       
+        assertEquals("0 : 0.0529", ljt.otaTestirivi());
     }
 
 }
