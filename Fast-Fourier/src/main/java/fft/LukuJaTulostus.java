@@ -63,7 +63,9 @@ public class LukuJaTulostus {
     }
     
     public void tulosta(double muunnos[], int taajuusmaara, boolean skaalaus) {
-        System.out.println("Käännöksestä saatiin seuraavat amplitudit taajuuskomponenteille");
+        System.out.println("");
+        System.out.println("Käännöksestä saatiin seuraavat amplitudit taajuuskomponenteille:");
+        System.out.println("");
         double skaalauskerroin = 1.0;
         if (skaalaus) {
         skaalauskerroin = muunnos[1];
@@ -72,6 +74,12 @@ public class LukuJaTulostus {
             System.out.println(" " + i + " : " + Math.abs(muunnos[i]/skaalauskerroin) );
             
         }
+        System.out.println("");
+    }
+    
+    public void tulostaSaro(double saro) {
+        System.out.println("Kokonaissärö valittuun taajuuskomponenttiin asti ja suhteessa perusaaltoon: " + saro*100 + " %.");
+        System.out.println("");
     }
 
     @Override

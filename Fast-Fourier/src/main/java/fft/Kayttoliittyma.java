@@ -24,9 +24,8 @@ public class Kayttoliittyma {
     /**
      * Metodi kysyy käyttäjältä syötteet ladattavalle tiedostolle ja laskennassa
      * käytettävien näytteiden lukumäärälle sekä tarkistaa, että lukumäärä on
-     * luvun 2 potenssi.
-     * Lisäksi kysytään käännöksen jälkeen haluttu tulostettavien taajuuskomponenttien
-     * määrä ja tarkistetaan sen sopivuus.
+     * luvun 2 potenssi. Lisäksi kysytään käännöksen jälkeen haluttu
+     * tulostettavien taajuuskomponenttien määrä ja tarkistetaan sen sopivuus. 
      *
      */
     public void aloita() {
@@ -44,7 +43,7 @@ public class Kayttoliittyma {
 
             if (tarkistaSyote()) {
                 lukumaara = Integer.parseInt(scanner.nextLine());
-                if ((lukumaara & (lukumaara - 1)) != 0) {
+                if ((lukumaara & (lukumaara - 1)) != 0) { //tarkistaa onko kakkosen potenssi
                     lukumaara = 0;
                     System.out.println("Virheellinen syöte, luku ei ole kakkosen potenssi");
                 }
@@ -67,14 +66,18 @@ public class Kayttoliittyma {
                 }
             }
         }
-        
+
         System.out.println("Jos et halua tulosten skaalausta perusaaltoon nähden, paina e. Jos haluat skaalata, paina jotain muuta nappia");
         String vastaus = scanner.nextLine();
         if (vastaus.equals("e")) {
             skaalaus = false;
         }
-        
+
         ljt.tulosta(muunnos, taajuusmaara, skaalaus);
+        double saro = offt.THD(muunnos, taajuusmaara);
+        ljt.tulostaSaro(saro);
+        
+        System.out.println("Kiitos käännöksestä, tervetuloa uudelleen!");
     }
 
     /**

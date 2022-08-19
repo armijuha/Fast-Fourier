@@ -39,7 +39,7 @@ public class LukuJaTulostusTest {
     public void setUp() throws IOException {
         //sisaan = new BufferedReader(new InputStreamReader(getClass().getResourceAsStream("/testidata")));
         luettavatRivit = 4;
-        ljt = new LukuJaTulostus("/home/armijuha/Tiralabra/tuhat", luettavatRivit);
+        ljt = new LukuJaTulostus("/home/armijuha/Tiralabra/testi1024", luettavatRivit);
         //URL url = this.getClass().getResource("/testidata");
         //File testidata = new File(url.getFile());
         //ljt = new LukuJaTulostus(testidata, luettavatRivit);

@@ -4,14 +4,14 @@
  * and open the template in the editor.
  */
 package fft;
-        
 
 /**
- *Pääluokka joka tekee uuden käyttöliittymän ja kutsuu sitä
- * 
+ * Pääluokka joka tekee uuden käyttöliittymän ja kutsuu sitä
+ *
  * @author armijuha
  */
 public class Main {
+
     public static void main(String[] args) {
         Kayttoliittyma kl = new Kayttoliittyma();
         kl.aloita();
