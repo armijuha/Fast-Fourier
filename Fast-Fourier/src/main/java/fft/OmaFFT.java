@@ -28,7 +28,7 @@ public class OmaFFT {
 
     }
 
-    public void muunna() {
+    public double[] muunnaDDF() {
         int k = 0;
         int N = data.length;
         
@@ -42,11 +42,12 @@ public class OmaFFT {
             
             k++;
         }
+        return reaali;
      
-        System.out.println("Reaali: ");
-        System.out.println(Arrays.toString(reaali));
-        System.out.print("Imaginääri: ");
-        System.out.println(Arrays.toString(imaginaari));
+        //System.out.println("Reaali: ");
+        //System.out.println(Arrays.toString(reaali));
+        //System.out.println("Imaginääri: ");
+        //System.out.println(Arrays.toString(imaginaari));
     }
 
 }

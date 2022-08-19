@@ -49,8 +49,8 @@ public class LukuJaTulostus {
                 tekstinayte = tekstinayte.replace(",", "."); //pilkun vaihto pisteeseen
                 double nayte = (Double.parseDouble(tekstinayte));
                 naytteet[luetutRivit-1] = nayte;
-                System.out.println("luetut rivit: " + luetutRivit);
-                System.out.println("luettu nayte: " + nayte);
+                //System.out.println("luetut rivit: " + luetutRivit);
+                //System.out.println("luettu nayte: " + nayte);
 
             }
             System.out.println("Tiedoston lukeminen valmis, " + luetutRivit + " riviä luettu.");
@@ -60,6 +60,18 @@ public class LukuJaTulostus {
             System.out.println("Jokin tiedoston lukemisessa meni pieleen.");
         }
         return null;
+    }
+    
+    public void tulosta(double muunnos[], int taajuusmaara, boolean skaalaus) {
+        System.out.println("Käännöksestä saatiin seuraavat amplitudit taajuuskomponenteille");
+        double skaalauskerroin = 1.0;
+        if (skaalaus) {
+        skaalauskerroin = muunnos[1];
+        }
+        for (int i = 0; i <= taajuusmaara; i++) {
+            System.out.println(" " + i + " : " + Math.abs(muunnos[i]/skaalauskerroin) );
+            
+        }
     }
 
     @Override
