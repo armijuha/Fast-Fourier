@@ -1,7 +1,6 @@
 package fft;
 
 import java.util.Arrays;
-import org.apache.commons.math3.complex.Complex;
 
 /**
  * Luokka laskee FFT:n testidatasta käyttäen omatekemää koodia, joka perustuu
@@ -12,14 +11,16 @@ import org.apache.commons.math3.complex.Complex;
  */
 public class OmaFFT {
 
-    private final double[] data;
+    private double[] data;
     private double[] reaali;
     private double kokonaissaro;
+    private int lukumaara;
     //private double[] imaginaari;
 
-    public OmaFFT(double[] data, int N) {
+    public OmaFFT(double[] data, int lukumaara) {
         this.data = data;
-        this.reaali = new double[N];
+        this.lukumaara = lukumaara;
+        this.reaali = new double[lukumaara];
         this.kokonaissaro = 0;
         //this.imaginaari = new double[N];
 
@@ -33,14 +34,15 @@ public class OmaFFT {
      */
     public double[] muunnaDDF() {
         int k = 0;
-        int N = data.length;
+        System.out.println("lukum: " +  lukumaara);
+        System.out.println("datal: " + data.length);
 
-        while (k < N) {
+        while (k < lukumaara) {
 
-            for (int i = 0; i < data.length; i++) {
+            for (int i = 0; i < lukumaara; i++) {
                 double nayte = data[i];
-                this.reaali[k] += nayte * Math.cos(2 * Math.PI / N * i * k);
-                //this.imaginaari[k] -= nayte * Math.sin(2 * Math.PI / N * i * k);
+                this.reaali[k] += nayte * Math.cos(2 * Math.PI / lukumaara * i * k);
+                //this.imaginaari[k] -= nayte * Math.sin(2 * Math.PI / lukumaara * i * k);
             }
 
             k++;
@@ -56,6 +58,7 @@ public class OmaFFT {
     /**
      * Metodi laskee kokonaissärön (Total Harmonic Distorsion) Fourier
      * käännöksen perusteella
+     *
      * @param muunnos
      * @param taajuusmaara
      * @return taajuuskomponenteista laskettu kokonaissärö
@@ -69,7 +72,7 @@ public class OmaFFT {
         kokonaissaro = Math.round(kokonaissaro * 10000d) / 10000d;
         return kokonaissaro;
     }
-    
+
     @Override
     public String toString() {
         return "" + this.data.length + " näytettä käännetty, kokonaissärö: " + this.kokonaissaro;

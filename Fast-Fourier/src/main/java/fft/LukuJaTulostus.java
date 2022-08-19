@@ -24,13 +24,14 @@ public class LukuJaTulostus {
         this.tiedostopolku = tiedostopolku;
         this.luettavatRivit = luettavatRivit;
         this.luetutRivit = 0;
-        this.ajat = new ArrayList();
+        this.ajat = new ArrayList<>();
         this.naytteet = new double[luettavatRivit];
     }
 
     /**
      * Metodi lukee tiedoston nopeasti rivi riviltä.Aika ja testinäytteet
      * erotellaan omiin listoihinsa ja ylimääräiset välilyönnit poistetaan.
+     *
      * @return testidatan näytteet double-taulukossa
      */
     public double[] lueTiedosto() {
@@ -49,7 +50,7 @@ public class LukuJaTulostus {
                 String tekstinayte = palat[2].trim(); //tyhjät pois
                 tekstinayte = tekstinayte.replace(",", "."); //pilkun vaihto pisteeseen
                 double nayte = (Double.parseDouble(tekstinayte));
-                naytteet[luetutRivit-1] = nayte;
+                naytteet[luetutRivit - 1] = nayte;
                 //System.out.println("luetut rivit: " + luetutRivit);
                 //System.out.println("luettu nayte: " + nayte);
 
@@ -62,34 +63,34 @@ public class LukuJaTulostus {
         }
         return null;
     }
-    
+
     public void tulosta(double muunnos[], int taajuusmaara, boolean skaalaus) {
         System.out.println("");
         System.out.println("Käännöksestä saatiin seuraavat amplitudit taajuuskomponenteille:");
         System.out.println("");
         double skaalauskerroin = 1.0;
         if (skaalaus) {
-        skaalauskerroin = muunnos[1];
+            skaalauskerroin = muunnos[1];
         }
-        this.testirivi = "0 : " + Math.round(Math.abs(muunnos[0]/skaalauskerroin) * 10000d) / 10000d; //tulosteen testausta varten
+        this.testirivi = "0 : " + Math.round(Math.abs(muunnos[0] / skaalauskerroin) * 10000d) / 10000d; //tulosteen testausta varten
         for (int i = 0; i <= taajuusmaara; i++) {
-            System.out.println(" " + i + " : " + Math.round(Math.abs(muunnos[i]/skaalauskerroin) * 10000d) / 10000d);
-            
+            System.out.println(" " + i + " : " + Math.round(Math.abs(muunnos[i] / skaalauskerroin) * 10000d) / 10000d);
+
         }
         System.out.println("");
     }
-    
+
     public void tulostaSaro(double saro) {
-        System.out.println("Kokonaissärö valittuun taajuuskomponenttiin asti ja suhteessa perusaaltoon: " + saro*100 + " %.");
+        System.out.println("Kokonaissärö valittuun taajuuskomponenttiin asti ja suhteessa perusaaltoon: " + saro * 100 + " %.");
         System.out.println("");
     }
 
     @Override
     public String toString() {
-        return "" + this.luetutRivit + " riviä luettu, 1. aika: " + ajat.get(0) +
-                " ja 1. näyte: " + naytteet[0];
+        return "" + this.luetutRivit + " riviä luettu, 1. aika: " + ajat.get(0)
+                + " ja 1. näyte: " + naytteet[0];
     }
-    
+
     public String otaTestirivi() {
         return this.testirivi;
     }
