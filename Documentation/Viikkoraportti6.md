@@ -1,4 +1,4 @@
-# Viikkoraportti 5
+# Viikkoraportti 6
 Olen tehnyt puuttuvaa palasta eli omaa FFT metodia tällä viikolla. Jos lähdetään
 positiivisista saavutuksista niin ohjelma toimii omallakin metodilla.
 FFT käännöksen tuloksetkaan eivät ole ihan totaalisen metsässä ja väärällä dekadilla,
