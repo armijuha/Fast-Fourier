@@ -1,6 +1,7 @@
 package fft;
 
 import java.util.Arrays;
+import org.apache.commons.math3.complex.Complex;
 
 /**
  * Luokka laskee FFT:n testidatasta käyttäen omatekemää koodia, joka perustuu
@@ -26,16 +27,59 @@ public class OmaFFT {
 
     }
 
+    public double[] muunna() {
+        if (this.lukumaara > 16) {
+            return muunnaFFT(this.data);
+        } else {
+            return muunnaDFT();
+        }
+    }
+
+    public double[] muunnaFFT(double[] data) {
+        int datanPituus = data.length;
+        if (datanPituus
+                == 1) {
+            return new double[]{data[0]};
+        }
+
+        double[] parilliset = new double[datanPituus / 2];
+        for (int i = 0;
+                i < (datanPituus
+                / 2); i++) {
+            parilliset[i] = data[2 * i];
+        }
+        double[] parillinenMuunnos = muunnaFFT(parilliset);
+
+        double[] parittomat = new double[datanPituus / 2];
+        for (int j = 0;
+                j < (datanPituus
+                / 2); j++) {
+            parittomat[j] = data[2 * j + 1];
+        }
+        double[] paritonMuunnos = muunnaFFT(parittomat);
+
+        int k = 0;
+        while (k < datanPituus / 2) {
+            double kerroin = Math.cos(2 * k * Math.PI / datanPituus);
+            System.out.println("kerroin: " + kerroin + "   k: " + k + "   datanPituus: " + datanPituus);
+            reaali[k] += parillinenMuunnos[k] + kerroin * paritonMuunnos[k];
+            System.out.println("parillinen: " + reaali[k]);
+            reaali[k + datanPituus / 2] += parillinenMuunnos[k] - kerroin * paritonMuunnos[k];
+            System.out.println("pariton: " + reaali[k + datanPituus / 2]);
+            k++;
+            System.out.println("K loopin lopussa: " + k);
+        }
+        return reaali;
+    }
+
     /**
      * Metodi laskee digitaalisen fourier käännöksen raa'alla voimalla, joka
      * soveltuu pieniin näytemääriin
      *
      * @return Fourier käännetty data double taulukossa
      */
-    public double[] muunnaDDF() {
+    public double[] muunnaDFT() {
         int k = 0;
-        System.out.println("lukum: " +  lukumaara);
-        System.out.println("datal: " + data.length);
 
         while (k < lukumaara) {
 
@@ -49,10 +93,6 @@ public class OmaFFT {
         }
         return reaali;
 
-        //System.out.println("Reaali: ");
-        //System.out.println(Arrays.toString(reaali));
-        //System.out.println("Imaginääri: ");
-        //System.out.println(Arrays.toString(imaginaari));
     }
 
     /**
@@ -65,7 +105,7 @@ public class OmaFFT {
      */
     public double laskeSaro(double muunnos[], int taajuusmaara) {
         double neliosumma = 0;
-        for (int i = 2; i < taajuusmaara; i++) {
+        for (int i = 2; i <= taajuusmaara; i++) {
             neliosumma += muunnos[i] * muunnos[i];
         }
         this.kokonaissaro = Math.sqrt(neliosumma) / Math.abs(muunnos[1]); //laskee kokonaissäron

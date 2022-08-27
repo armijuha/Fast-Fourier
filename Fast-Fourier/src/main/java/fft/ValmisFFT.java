@@ -23,7 +23,7 @@ public class ValmisFFT {
 
     }
 
-    public void muunna() {
+    public double[] muunna() {
         FastFourierTransformer transformer = new FastFourierTransformer(DftNormalization.STANDARD);
         Complex[] complex = transformer.transform(data, TransformType.FORWARD);
 
@@ -34,10 +34,20 @@ public class ValmisFFT {
             real[i] = complex[i].getReal();
             imag[i] = complex[i].getImaginary();
         }
-        System.out.print("Reaali: ");
-        System.out.println(Arrays.toString(real));
-        System.out.print("Imaginääri: ");
-        System.out.println(Arrays.toString(imag));
+      //  System.out.print("Reaali: ");
+      //  System.out.println(Arrays.toString(real));
+      //  System.out.print("Imaginääri: ");
+      //  System.out.println(Arrays.toString(imag));
+      return real;
+    }
+    public double laskeSaro(double muunnos[], int taajuusmaara) {
+        double neliosumma = 0;
+        for (int i = 2; i <= taajuusmaara; i++) {
+            neliosumma += muunnos[i] * muunnos[i];
+        }
+        double kokonaissaro = Math.sqrt(neliosumma) / Math.abs(muunnos[1]); //laskee kokonaissäron
+        kokonaissaro = Math.round(kokonaissaro * 10000d) / 10000d;
+        return kokonaissaro;
     }
 
 }

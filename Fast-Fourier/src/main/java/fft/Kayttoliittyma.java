@@ -54,7 +54,7 @@ public class Kayttoliittyma {
         double naytteet[] = ljt.lueTiedosto();
 
         OmaFFT offt = new OmaFFT(naytteet, lukumaara);
-        double muunnos[] = offt.muunnaDDF();
+        double muunnos[] = offt.muunna();
 
         System.out.println("Kuinka monenteen taajuuteen asti tulostetaan? (valitse väliltä 1-200, mutta kuitenkin vähemmän kuin luettujen näytteiden määrä)");
         while (taajuusmaara < 1) {
