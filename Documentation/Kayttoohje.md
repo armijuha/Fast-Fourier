@@ -15,8 +15,8 @@ Testidata "testi1024" sisältää 1024 näytettä eräästä oikeasta mittaukses
  sinikäyrän jakson ja joka sisältää jonkin verran muita rippelitaajuuksia. Oikeasta käännöksestä ei ole muuten varmuutta
  mutta sitä voi verrata esim. ValmisFFT luokan (valmiita kirjastoja hyödyntävä FFT) antamaan käännökseen.
 
-Oma toteutus käyttää toistaiseksi hidasta brute force DFT käännöstä, kunnes FFT saadaan valmiiksi ja toimimaan. 
-Nämä testidatat ovat niin lyhyitä ettei hitaus varmaankaan tule esille ja alle 10000 samppelin datat menee vielä kohtuullisessa ajassa,
+Oma toteutus käyttää pienillä näytemäärillä hidasta brute force DFT käännöstä ja yli 16 näytteen määrillä FFT:tä joka toimii muttei anna toistaiseksi oikeita tuloksia. 
+Nämä testidatat ovat niin lyhyitä ettei hitaus varmaankaan tule esille ja alle 10000 samppelin datat menee vielä kohtuullisessa ajassa DFT:lläkin,
 mutta ei kannata yrittää miljoonaa.
 
  
