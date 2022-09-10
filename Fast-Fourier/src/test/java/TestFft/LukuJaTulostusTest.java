@@ -62,7 +62,7 @@ public class LukuJaTulostusTest {
     
     @Test
     public void tulostustesti(){
-        double muunnos[] = offt.muunnaDDF();
+        double muunnos[] = offt.muunnaDFT();
         ljt.tulosta(muunnos, 200, true);
        
         assertEquals("0 : 0.0529", ljt.otaTestirivi());

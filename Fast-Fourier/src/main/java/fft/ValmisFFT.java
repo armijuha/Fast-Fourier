@@ -1,6 +1,5 @@
 package fft;
 
-import java.util.Arrays;
 import org.apache.commons.math3.complex.Complex;
 import org.apache.commons.math3.transform.DftNormalization;
 import org.apache.commons.math3.transform.FastFourierTransformer;
@@ -34,12 +33,18 @@ public class ValmisFFT {
             real[i] = complex[i].getReal();
             imag[i] = complex[i].getImaginary();
         }
-      //  System.out.print("Reaali: ");
-      //  System.out.println(Arrays.toString(real));
-      //  System.out.print("Imaginääri: ");
-      //  System.out.println(Arrays.toString(imag));
-      return real;
+        
+        return real;
     }
+    
+    /**
+     * Metodi laskee kokonaissärön (Total Harmonic Distorsion) Fourier
+     * käännöksen perusteella
+     *
+     * @param muunnos
+     * @param taajuusmaara
+     * @return taajuuskomponenteista laskettu kokonaissärö
+     */
     public double laskeSaro(double muunnos[], int taajuusmaara) {
         double neliosumma = 0;
         for (int i = 2; i <= taajuusmaara; i++) {
@@ -48,6 +53,10 @@ public class ValmisFFT {
         double kokonaissaro = Math.sqrt(neliosumma) / Math.abs(muunnos[1]); //laskee kokonaissäron
         kokonaissaro = Math.round(kokonaissaro * 10000d) / 10000d;
         return kokonaissaro;
+    }
+    
+    public double[]  haeTulosdata() {
+        return tulosdata;
     }
 
 }

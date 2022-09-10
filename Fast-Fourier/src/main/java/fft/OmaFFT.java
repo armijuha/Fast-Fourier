@@ -1,14 +1,12 @@
 package fft;
 
-import java.util.Arrays;
 import org.apache.commons.math3.complex.Complex;
 
 /**
- * Luokka laskee FFT:n testidatasta käyttäen omatekemää koodia, joka perustuu
- * Cooley-Tukeyn algoritmiin (jonain päivänä toivottavasti, nyt vielä
- * keskeneräinen).
+ * Luokka laskee FFT:n testidatasta käyttäen Cooley-Tukeyn algoritmiin
+ * perustuvaa koodia. Pienillä näytemäärillä käytetään raa'an voiman
+ * digitaalista fourier muunnosta DFT:tä.
  *
- * @author armijuha
  */
 public class OmaFFT {
 
@@ -16,60 +14,76 @@ public class OmaFFT {
     private double[] reaali;
     private double kokonaissaro;
     private int lukumaara;
-    //private double[] imaginaari;
 
     public OmaFFT(double[] data, int lukumaara) {
         this.data = data;
         this.lukumaara = lukumaara;
         this.reaali = new double[lukumaara];
         this.kokonaissaro = 0;
-        //this.imaginaari = new double[N];
 
     }
 
+    /**
+     * Metodi valitsee käytettävän algoritmin näytteiden lukumäärän perusteella.
+     * Jos näytteitä on enemmän kuin 32 käytetään kompleksilukuja käyttävää FFT
+     * algoritmia, jota varten double -näytteet muutetaan Complex muotoon ja
+     * käännöksen jälkeen tulokset jälleen doubleksi.
+     *
+     */
     public double[] muunna() {
-        if (this.lukumaara > 16) {
-            return muunnaFFT(this.data);
-        } else {
+        if (this.lukumaara <= 32) {
             return muunnaDFT();
+        } else {
+            Complex[] kompleksi = new Complex[data.length];
+            for (int i = 0; i < data.length; i++) {
+                double real = data[i];
+                double imag = 0;
+                Complex j = new Complex(real, imag);
+                kompleksi[i] = j;
+
+            }
+            double[] real = new double[data.length];
+            Complex[] kaannos = muunnaFFT(kompleksi);
+            for (int i = 0; i < kaannos.length; ++i) {
+                real[i] = kaannos[i].getReal();
+            }
+            this.reaali = real;
+            return reaali;
         }
     }
 
-    public double[] muunnaFFT(double[] data) {
+    /**
+     * Metodi laskee nopean fourier muunnoksen FFT:n, joka soveltuu suurille
+     * näytemääriille
+     *
+     * @return Fourier käännetty data kompleksilukutaulukossa
+     */
+    public static Complex[] muunnaFFT(Complex[] data) {
         int datanPituus = data.length;
-        if (datanPituus
-                == 1) {
-            return new double[]{data[0]};
+        if (datanPituus == 1) {
+            return new Complex[]{data[0]};
         }
 
-        double[] parilliset = new double[datanPituus / 2];
-        for (int i = 0;
-                i < (datanPituus
-                / 2); i++) {
+        Complex[] parilliset = new Complex[datanPituus / 2];
+        for (int i = 0; i < datanPituus / 2; i++) {
             parilliset[i] = data[2 * i];
         }
-        double[] parillinenMuunnos = muunnaFFT(parilliset);
+        Complex[] parillinenMuunnos = muunnaFFT(parilliset);
 
-        double[] parittomat = new double[datanPituus / 2];
-        for (int j = 0;
-                j < (datanPituus
-                / 2); j++) {
+        Complex[] parittomat = new Complex[datanPituus / 2];
+        for (int j = 0; j < datanPituus / 2; j++) {
             parittomat[j] = data[2 * j + 1];
         }
-        double[] paritonMuunnos = muunnaFFT(parittomat);
+        Complex[] paritonMuunnos = muunnaFFT(parittomat);
 
-        int k = 0;
-        while (k < datanPituus / 2) {
-            double kerroin = Math.cos(2 * k * Math.PI / datanPituus);
-            System.out.println("kerroin: " + kerroin + "   k: " + k + "   datanPituus: " + datanPituus);
-            reaali[k] += parillinenMuunnos[k] + kerroin * paritonMuunnos[k];
-            System.out.println("parillinen: " + reaali[k]);
-            reaali[k + datanPituus / 2] += parillinenMuunnos[k] - kerroin * paritonMuunnos[k];
-            System.out.println("pariton: " + reaali[k + datanPituus / 2]);
-            k++;
-            System.out.println("K loopin lopussa: " + k);
+        Complex[] kaannos = new Complex[datanPituus];
+        for (int k = 0; k < datanPituus / 2; k++) {
+            double kth = -2 * k * Math.PI / datanPituus;
+            Complex wk = new Complex(Math.cos(kth), Math.sin(kth));
+            kaannos[k] = parillinenMuunnos[k].add(wk.multiply(paritonMuunnos[k]));
+            kaannos[k + datanPituus / 2] = parillinenMuunnos[k].subtract(wk.multiply(paritonMuunnos[k]));
         }
-        return reaali;
+        return kaannos;
     }
 
     /**
@@ -116,5 +130,9 @@ public class OmaFFT {
     @Override
     public String toString() {
         return "" + this.data.length + " näytettä käännetty, kokonaissärö: " + this.kokonaissaro;
+    }
+    
+    public double[]  haeReaali() {
+        return reaali;
     }
 }
