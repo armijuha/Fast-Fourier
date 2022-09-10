@@ -22,6 +22,17 @@ Fast Fourier muuttaa nopeasti ja helposti suuren määrän aikatason testinäytt
 
 ### Komentorivitoiminnot
 
+#### Ohjelman suoritus terminaalista
+
+Projektin koodin pystyy suorittamaan komennolla 
+> mvn compile exec:java -Dexec.mainClass=fft.Main
+
+Jar-tiedoston voi luoda komennolla
+> mvn package
+
+jolloin saadun tiedoston voi edelleen suorittaa komennolla
+> java -jar Fast-Fourier-1.0-SNAPSHOT.jar
+
 #### Testaus
 
 Testit suoritetaan komennolla
