@@ -62,6 +62,12 @@ public class LukuJaTulostus {
         return null;
     }
 
+    /**
+     * Metodi tulostaa amplitudit halutulle määrälle taajuuskomponenttien
+     * amplitudit halutulle määrälle taajuuskomponentteja.Jos halutaan skaalaus
+     * niin kaikki komponentit skaalataan suhteessa perusaaltoon.
+     *
+     */
     public void tulosta(double muunnos[], int taajuusmaara, boolean skaalaus) {
         System.out.println("");
         System.out.println("Käännöksestä saatiin seuraavat amplitudit taajuuskomponenteille:");
@@ -78,6 +84,11 @@ public class LukuJaTulostus {
         System.out.println("");
     }
 
+    /**
+     * Metodi tulostaa valittujen taajuuskomponenttien kokonaissärön suhteessa
+     * perusaaltoon.
+     *
+     */
     public void tulostaSaro(double saro) {
         System.out.println("Kokonaissärö valittuun taajuuskomponenttiin asti ja suhteessa perusaaltoon: " + saro * 100 + " %.");
         System.out.println("");

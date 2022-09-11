@@ -7,7 +7,7 @@ import org.apache.commons.math3.transform.TransformType;
 
 /**
  * Luokka laskee FFT:n testidatasta hyödyntäen valmiita kirjastoja
- * 
+ *
  */
 public class ValmisFFT {
 
@@ -22,6 +22,12 @@ public class ValmisFFT {
 
     }
 
+    /**
+     * Metodi laskee FFT:n testidatasta hyödyntäen valmiita kirjastoja.
+     * Käännöksen laskemisessa käytetään kompleksilukuja, vaikka nyt sekä
+     * luettava data että tuloksena saatava data ovat reaalisia.
+     *
+     */
     public double[] muunna() {
         FastFourierTransformer transformer = new FastFourierTransformer(DftNormalization.STANDARD);
         Complex[] complex = transformer.transform(data, TransformType.FORWARD);
@@ -33,10 +39,10 @@ public class ValmisFFT {
             real[i] = complex[i].getReal();
             imag[i] = complex[i].getImaginary();
         }
-        
+
         return real;
     }
-    
+
     /**
      * Metodi laskee kokonaissärön (Total Harmonic Distorsion) Fourier
      * käännöksen perusteella
@@ -53,10 +59,6 @@ public class ValmisFFT {
         double kokonaissaro = Math.sqrt(neliosumma) / Math.abs(muunnos[1]); //laskee kokonaissäron
         kokonaissaro = Math.round(kokonaissaro * 10000d) / 10000d;
         return kokonaissaro;
-    }
-    
-    public double[]  haeTulosdata() {
-        return tulosdata;
     }
 
 }

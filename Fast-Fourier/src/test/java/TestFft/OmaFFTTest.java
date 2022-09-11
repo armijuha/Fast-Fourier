@@ -51,18 +51,18 @@ public class OmaFFTTest {
     public void kaannostesti() throws IOException {
         double[] muunnos = offt.muunnaDFT();
         offt.laskeSaro(muunnos, 200);
-        
+
         String vastaus = offt.toString();
         assertEquals("1024 näytettä käännetty, kokonaissärö: 0.0264", vastaus);
     }
-    
+
     @Test
     public void vertailutesti() throws IOException {
         double[] omamuunnos = offt.muunna();
         double omasaro = offt.laskeSaro(omamuunnos, 500);
         double[] valmismuunnos = vfft.muunna();
         double valmissaro = vfft.laskeSaro(valmismuunnos, 500);
-        
+
         assertEquals(omasaro, valmissaro, 0.001);
     }
 }

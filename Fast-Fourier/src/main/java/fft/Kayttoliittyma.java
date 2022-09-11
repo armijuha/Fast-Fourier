@@ -25,7 +25,7 @@ public class Kayttoliittyma {
      * Metodi kysyy käyttäjältä syötteet ladattavalle tiedostolle ja laskennassa
      * käytettävien näytteiden lukumäärälle sekä tarkistaa, että lukumäärä on
      * luvun 2 potenssi. Lisäksi kysytään käännöksen jälkeen haluttu
-     * tulostettavien taajuuskomponenttien määrä ja tarkistetaan sen sopivuus. 
+     * tulostettavien taajuuskomponenttien määrä ja tarkistetaan sen sopivuus.
      *
      */
     public void aloita() {
@@ -76,7 +76,7 @@ public class Kayttoliittyma {
         ljt.tulosta(muunnos, taajuusmaara, skaalaus);
         double saro = offt.laskeSaro(muunnos, taajuusmaara);
         ljt.tulostaSaro(saro);
-       
+
         System.out.println("Kiitos käännöksestä, tervetuloa uudelleen!");
     }
 

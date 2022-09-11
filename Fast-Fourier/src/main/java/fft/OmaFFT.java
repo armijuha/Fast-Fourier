@@ -131,8 +131,5 @@ public class OmaFFT {
     public String toString() {
         return "" + this.data.length + " näytettä käännetty, kokonaissärö: " + this.kokonaissaro;
     }
-    
-    public double[]  haeReaali() {
-        return reaali;
-    }
+
 }
