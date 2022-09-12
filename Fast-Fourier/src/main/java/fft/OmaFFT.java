@@ -78,10 +78,9 @@ public class OmaFFT {
 
         Complex[] kaannos = new Complex[datanPituus];
         for (int k = 0; k < datanPituus / 2; k++) {
-            double kth = -2 * k * Math.PI / datanPituus;
-            Complex wk = new Complex(Math.cos(kth), Math.sin(kth));
-            kaannos[k] = parillinenMuunnos[k].add(wk.multiply(paritonMuunnos[k]));
-            kaannos[k + datanPituus / 2] = parillinenMuunnos[k].subtract(wk.multiply(paritonMuunnos[k]));
+            Complex kerroin = new Complex(Math.cos(2 * k * Math.PI / datanPituus), Math.sin(2 * k * Math.PI / datanPituus));
+            kaannos[k] = parillinenMuunnos[k].add(kerroin.multiply(paritonMuunnos[k]));
+            kaannos[k + datanPituus / 2] = parillinenMuunnos[k].subtract(kerroin.multiply(paritonMuunnos[k]));
         }
         return kaannos;
     }
